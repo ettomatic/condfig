@@ -21,10 +21,15 @@ module Condfig
     end
 
     describe 'GET /pages' do
-      it 'returns a list of all the available reosurces' do
+      it 'returns a list of all the available resources' do
         expected = { foo: { href: 'http://example.org/pages/foo'} }.to_json
         get '/pages'
         expect(last_response.body).to eq expected
+      end
+
+      it 'returns an ETag in the header' do
+        get '/pages'
+        expect(last_response.headers['ETag']).to_not be_nil
       end
     end
 
@@ -35,7 +40,7 @@ module Condfig
           expect(last_response.status).to eq(200)
         end
 
-        it 'returns an etag in the header' do
+        it 'returns an ETag in the header' do
           get '/pages/foo'
           expect(last_response.headers['ETag']).to_not be_nil
         end

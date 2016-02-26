@@ -1,2 +1,2 @@
-web: bundle exec puma
-db:  redis-server
+web: bundle exec puma --port $PUMA_PORT
+db:  redis-server --port $REDIS_PORT

@@ -2,7 +2,7 @@
 A simple restful configuration store
 
 # Local Setup
-## requiremens
+## Requiremens
 First, you will need the version of Ruby defined in the .ruby-version file and bundler installed.
 You will also need [Redis](http://redis.io). To install it on you machine:
 
@@ -15,6 +15,7 @@ Now you're ready to setup the app:
 ```
 gem install foreman
 bundle install
+cp .env.sample .env
 ```
 
 Use this command to run the test suite:
@@ -25,10 +26,10 @@ bundle exec rspec
 
 Run the app with:
 ```
-foreman
+foreman start
 ```
 
-Now you can visit the web interface at
+The API interface is now available at
 [http://127.0.0.1:9292/pages](http://127.0.0.1:9292/page).
 
 # Usage

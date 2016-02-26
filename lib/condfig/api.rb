@@ -16,6 +16,7 @@ module Condfig
       ConfigRepository.all.map do |k|
         hrefs[k] = { href: location_for(k) }
       end
+      etag Digest::MD5.hexdigest(hrefs.to_s)
       hrefs.to_json
     end
 
@@ -72,8 +73,8 @@ module Condfig
       end
     end
 
-    get '/heartbeat' do
-      'ok'
+    get '/ping' do
+      ConfigRepository.ping
     end
 
     private

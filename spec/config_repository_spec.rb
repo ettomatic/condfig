@@ -7,6 +7,11 @@ module Condfig
       ConfigRepository.search('foo')
     end
 
+    it 'allows retrieving all the available data' do
+      expect(ConfigRepository.db).to receive(:keys)
+      ConfigRepository.all
+    end
+
     it 'allows storing data' do
       expect(ConfigRepository.db).to receive(:set).with('foo', 'some data')
       ConfigRepository.store('foo', 'some data')

@@ -18,8 +18,12 @@ module Condfig
       db.del(id)
     end
 
+    def self.ping
+      db.ping
+    end
+
     def self.db
-      @redis ||= Redis.new
+      @redis ||= Redis.new(host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT'])
     end
   end
 end
