@@ -17,7 +17,7 @@ module Condfig
       true
     end
 
-    def to_json
+    def as_json
       @data.to_json
     end
   end

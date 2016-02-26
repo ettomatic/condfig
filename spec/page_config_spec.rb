@@ -9,7 +9,7 @@ module Condfig
       }
     end
 
-    subject { PageConfig.new(data) }
+    subject { described_class.new(data) }
 
     describe '#id' do
       it 'returns the page id' do
@@ -50,6 +50,12 @@ module Condfig
         it 'return true' do
           expect(subject.valid?(id: 'foo')).to be true
         end
+      end
+    end
+
+    describe '#as_json' do
+      it 'returns a json representation' do
+        expect(subject.as_json).to eq(data.to_json)
       end
     end
   end

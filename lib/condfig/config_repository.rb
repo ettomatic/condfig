@@ -2,6 +2,10 @@ module Condfig
   require 'redis'
 
   class ConfigRepository
+    def self.all
+      db.keys
+    end
+
     def self.search(id)
       db.get(id)
     end
