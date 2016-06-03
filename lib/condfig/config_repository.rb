@@ -23,7 +23,7 @@ module Condfig
     end
 
     def self.db
-      @redis ||= Redis.new(host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT'])
+      @redis ||= Redis.new(host: 'redis', port: 6379)
     end
   end
 end

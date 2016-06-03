@@ -1,0 +1,16 @@
+app:
+  build: .
+  command: puma -p 9292
+  volumes:
+    - .:/app
+  ports:
+    - "9292:9292"
+  links:
+    - redis
+redis:
+  image: redis:alpine
+  command: redis-server --appendonly yes
+  volumes:
+    - ./redis-data:/data
+  ports:
+    - "6379"
